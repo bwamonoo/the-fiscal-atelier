@@ -4,6 +4,7 @@ export function Dashboard() {
   return(
     <>
       <title>The Fiscal Atelier - Dashboard</title>
+      
         <div className="app-container">
 
         <aside className="sidebar">

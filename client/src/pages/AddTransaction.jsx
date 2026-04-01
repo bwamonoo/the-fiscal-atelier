@@ -4,6 +4,7 @@ export function AddTransaction() {
   return (
     <>
       <title>The Fiscal Atelier - Add Transaction</title>
+      
       <div className="app-container">
         <aside className="sidebar">
           <div className="sidebar-header">
