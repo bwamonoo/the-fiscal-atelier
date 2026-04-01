@@ -1,49 +1,16 @@
-import "./AddTransaction.css"
+import { Sidebar } from "../components/Sidebar";
+import "./AddTransaction.css";
 
 export function AddTransaction() {
   return (
     <>
       <title>The Fiscal Atelier - Add Transaction</title>
-      
+
       <div className="app-container">
-        <aside className="sidebar">
-          <div className="sidebar-header">
-            <h1 className="brand">The Fiscal Atelier</h1>
-            <p className="tagline">Wealth Curation</p>
-          </div>
-          <nav className="nav-menu">
-            <a href="/" className="nav-item">
-              <i data-lucide="layout-dashboard"></i>
-              <span>Dashboard</span>
-            </a>
-            <a href="/transactions" className="nav-item">
-              <i data-lucide="receipt-text"></i>
-              <span>Transactions</span>
-            </a>
-          </nav>
-          <div className="sidebar-action">
-            <a
-              href="/add-transaction"
-              className="btn btn-primary btn-block active"
-            >
-              <i data-lucide="plus"></i>
-              <span>Add Transaction</span>
-            </a>
-          </div>
-        </aside>
+        <Sidebar />
 
         <main className="main-content">
-          <header className="top-bar">
-            <h2 className="page-title">Transaction Management</h2>
-            <div className="top-bar-actions">
-              <button className="icon-btn">
-                <i data-lucide="bell"></i>
-              </button>
-              <div className="user-profile">
-                <img src="https://picsum.photos/seed/user/100/100" alt="User" />
-              </div>
-            </div>
-          </header>
+
 
           <div className="content-wrapper centered">
             <div className="breadcrumb">

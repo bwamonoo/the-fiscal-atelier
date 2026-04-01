@@ -1,32 +1,13 @@
+import { Sidebar } from "../components/Sidebar";
 import "./TransactionHistory.css"
 
 export function TransactionHistory() {
   return (
     <>
       <title>The Fiscal Atelier - Transactions</title>
+      
       <div class="app-container">
-        <aside class="sidebar">
-          <div class="sidebar-header">
-            <h1 class="brand">The Fiscal Atelier</h1>
-            <p class="tagline">Wealth Curation</p>
-          </div>
-          <nav class="nav-menu">
-            <a href="index.html" class="nav-item">
-              <i data-lucide="layout-dashboard"></i>
-              <span>Dashboard</span>
-            </a>
-            <a href="/transactions" class="nav-item active">
-              <i data-lucide="receipt-text"></i>
-              <span>Transactions</span>
-            </a>
-          </nav>
-          <div class="sidebar-action">
-            <a href="add-transaction.html" class="btn btn-primary btn-block">
-              <i data-lucide="plus"></i>
-              <span>Add Transaction</span>
-            </a>
-          </div>
-        </aside>
+        <Sidebar />
 
         <main class="main-content">
           <header class="top-bar">
