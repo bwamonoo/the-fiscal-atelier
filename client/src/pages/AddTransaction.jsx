@@ -11,18 +11,18 @@ export function AddTransaction() {
             <p className="tagline">Wealth Curation</p>
           </div>
           <nav className="nav-menu">
-            <a href="index.html" className="nav-item">
+            <a href="/" className="nav-item">
               <i data-lucide="layout-dashboard"></i>
               <span>Dashboard</span>
             </a>
-            <a href="transactions.html" className="nav-item">
+            <a href="/transactions" className="nav-item">
               <i data-lucide="receipt-text"></i>
               <span>Transactions</span>
             </a>
           </nav>
           <div className="sidebar-action">
             <a
-              href="add-transaction.html"
+              href="/add-transaction"
               className="btn btn-primary btn-block active"
             >
               <i data-lucide="plus"></i>
@@ -98,7 +98,7 @@ export function AddTransaction() {
                   <button type="submit" className="btn btn-primary btn-large">
                     Save Transaction
                   </button>
-                  <a href="index.html" className="btn btn-outline btn-large">
+                  <a href="/" className="btn btn-outline btn-large">
                     Cancel
                   </a>
                 </div>

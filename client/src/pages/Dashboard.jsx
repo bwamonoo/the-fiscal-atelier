@@ -12,17 +12,17 @@ export function Dashboard() {
                 <p className="tagline">Wealth Curation</p>
             </div>
             <nav className="nav-menu">
-                <a href="index.html" className="nav-item active">
+                <a href="/" className="nav-item active">
                     <i data-lucide="layout-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="transactions.html" className="nav-item">
+                <a href="/transactions" className="nav-item">
                     <i data-lucide="receipt-text"></i>
                     <span>Transactions</span>
                 </a>
             </nav>
             <div className="sidebar-action">
-                <a href="add-transaction.html" className="btn btn-primary btn-block">
+                <a href="/add-transaction" className="btn btn-primary btn-block">
                     <i data-lucide="plus"></i>
                     <span>Add Transaction</span>
                 </a>
