@@ -1,10 +1,14 @@
+import { Routes, Route } from "react-router";
 import { Dashboard } from './pages/Dashboard'
 import './App.css'
 
 function App() {
   return (
     <>
-    <Dashboard />
+    <Routes>
+      <Route index element={<Dashboard />} />
+      <Route path="/add-transaction" element={<div>Test add-transaction page</div>} />
+    </Routes>
     <script>{lucide.createIcons()}</script>
     </>
   )
