@@ -1,0 +1,209 @@
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+}
+
+.metric-group .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.balance {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    letter-spacing: -0.05em;
+}
+
+.decimals {
+    color: #cbd5e1;
+    font-weight: 300;
+}
+
+.summary-cards {
+    display: flex;
+    gap: 16px;
+}
+
+.card {
+    padding: 16px 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.card-income { background-color: var(--secondary-container); color: var(--secondary); }
+.card-spending { background-color: var(--tertiary-container); color: var(--white); }
+
+.icon-box {
+    background-color: rgba(255,255,255,0.4);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.card-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.7;
+}
+
+.card-value {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+/* Surface Card */
+.surface-card {
+    background-color: var(--white);
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.card-header h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+}
+
+/* Chart */
+.chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+}
+
+.pie-placeholder {
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    border: 20px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.pie-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pie-label {
+    font-size: 14px;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.pie-total {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.legend-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: var(--bg-slate-50);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* Table */
+.table-section {
+    margin-top: 48px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.table-card {
+    background-color: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #f1f5f9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: var(--bg-slate-50);
+    padding: 16px 24px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    text-align: left;
+}
+
+td {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f8fafc;
+    font-size: 14px;
+}
+
+.cat-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-expense { background-color: var(--tertiary-container); color: var(--white); }
+.badge-income { background-color: var(--secondary-container); color: var(--secondary); }
+
+.amount-neg { color: var(--tertiary); font-weight: 700; }
+.amount-pos { color: var(--secondary); font-weight: 700; }
+
+.text-right { text-align: right; }

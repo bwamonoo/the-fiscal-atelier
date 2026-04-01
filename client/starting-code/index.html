@@ -1,147 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fiscal Atelier - Dashboard</title>
+
+
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
+
 <body>
-    <div class="app-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1 class="brand">The Fiscal Atelier</h1>
-                <p class="tagline">Wealth Curation</p>
-            </div>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-item active">
-                    <i data-lucide="layout-dashboard"></i>
-                    <span>Dashboard</span>
-                </a>
-                <a href="transactions.html" class="nav-item">
-                    <i data-lucide="receipt-text"></i>
-                    <span>Transactions</span>
-                </a>
-            </nav>
-            <div class="sidebar-action">
-                <a href="add-transaction.html" class="btn btn-primary btn-block">
-                    <i data-lucide="plus"></i>
-                    <span>Add Transaction</span>
-                </a>
-            </div>
-            <div class="sidebar-footer">
-                <a href="#" class="nav-item">
-                    <i data-lucide="settings"></i>
-                    <span>Settings</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <i data-lucide="help-circle"></i>
-                    <span>Support</span>
-                </a>
-            </div>
-        </aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="top-bar">
-                <h2 class="page-title">The Editorial Ledger</h2>
-                <div class="top-bar-actions">
-                    <button class="icon-btn">
-                        <i data-lucide="bell"></i>
-                        <span class="notification-dot"></span>
-                    </button>
-                    <div class="user-profile">
-                        <img src="https://picsum.photos/seed/user/100/100" alt="User">
-                    </div>
-                </div>
-            </header>
 
-            <div class="content-wrapper">
-                <!-- Hero Section -->
-                <section class="hero-section">
-                    <div class="metric-group">
-                        <span class="label">Current Net Worth</span>
-                        <h3 class="balance">$142,850<span class="decimals">.00</span></h3>
-                    </div>
-                    <div class="summary-cards">
-                        <div class="card card-income">
-                            <div class="icon-box"><i data-lucide="trending-up"></i></div>
-                            <div class="card-info">
-                                <span class="card-label">Monthly Income</span>
-                                <span class="card-value">+$12,400</span>
-                            </div>
-                        </div>
-                        <div class="card card-spending">
-                            <div class="icon-box"><i data-lucide="trending-down"></i></div>
-                            <div class="card-info">
-                                <span class="card-label">Monthly Spending</span>
-                                <span class="card-value">-$4,210</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Chart Section -->
-                <section class="chart-section">
-                    <div class="surface-card">
-                        <div class="card-header">
-                            <h4>Spending Composition</h4>
-                            <button class="text-btn">View Details</button>
-                        </div>
-                        <div class="chart-container">
-                            <div class="pie-placeholder">
-                                <!-- Recharts will go here in React -->
-                                <div class="pie-center">
-                                    <span class="pie-label">Total</span>
-                                    <span class="pie-total">$4,210</span>
-                                </div>
-                            </div>
-                            <div class="legend-grid">
-                                <div class="legend-item"><span class="dot" style="background: #0040a1"></span> Housing <span>40%</span></div>
-                                <div class="legend-item"><span class="dot" style="background: #4c6454"></span> Food <span>25%</span></div>
-                                <div class="legend-item"><span class="dot" style="background: #81272b"></span> Transport <span>15%</span></div>
-                                <div class="legend-item"><span class="dot" style="background: #cbd5e1"></span> Others <span>20%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Table Section -->
-                <section class="table-section">
-                    <div class="section-header">
-                        <h4>Recent Entries</h4>
-                        <button class="text-btn">Archive Access <i data-lucide="arrow-right"></i></button>
-                    </div>
-                    <div class="table-card">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Category</th>
-                                    <th>Description</th>
-                                    <th>Type</th>
-                                    <th class="text-right">Amount</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Oct 24, 2023</td>
-                                    <td><div class="cat-cell"><i data-lucide="utensils"></i> Dining</div></td>
-                                    <td>The Gilded Spoon - Debit Card</td>
-                                    <td><span class="badge badge-expense">Expense</span></td>
-                                    <td class="text-right amount-neg">-$142.50</td>
-                                </tr>
-                                <!-- More rows... -->
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </div>
-        </main>
-    </div>
-    <script>lucide.createIcons();</script>
 </body>
+
 </html>
