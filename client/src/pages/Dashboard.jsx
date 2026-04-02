@@ -1,7 +1,21 @@
 import { Sidebar } from "../components/Sidebar";
+import { MOCK_TRANSACTIONS } from "../constants";
+import { SPENDING_COMPOSITION } from "../constants";
 import "./Dashboard.css";
 
 export function Dashboard() {
+  let netWorth = 0;
+
+  MOCK_TRANSACTIONS.forEach((txn) => {
+    txn.type === "income"
+      ? (netWorth += txn.amountCents)
+      : (netWorth -= txn.amountCents);
+  });
+
+  console.log("net", (netWorth / 100).toFixed(2));
+  netWorth = String((netWorth / 100).toFixed(2)).slice(0, -3);
+  const decimal = String((netWorth / 100).toFixed(2)).slice(-3);
+
   return (
     <>
       <title>The Fiscal Atelier - Dashboard</title>
@@ -28,7 +42,8 @@ export function Dashboard() {
               <div className="metric-group">
                 <span className="label">Current Net Worth</span>
                 <h3 className="balance">
-                  $142,850<span className="decimals">.00</span>
+                  ${netWorth}
+                  <span className="decimals">{decimal}</span>
                 </h3>
               </div>
               <div className="summary-cards">
@@ -67,34 +82,17 @@ export function Dashboard() {
                     </div>
                   </div>
                   <div className="legend-grid">
-                    <div className="legend-item">
-                      <span
-                        className="dot"
-                        style={{ background: "#0040a1" }}
-                      ></span>{" "}
-                      Housing <span>40%</span>
-                    </div>
-                    <div className="legend-item">
-                      <span
-                        className="dot"
-                        style={{ background: "#4c6454" }}
-                      ></span>{" "}
-                      Food <span>25%</span>
-                    </div>
-                    <div className="legend-item">
-                      <span
-                        className="dot"
-                        style={{ background: "#81272b" }}
-                      ></span>{" "}
-                      Transport <span>15%</span>
-                    </div>
-                    <div className="legend-item">
-                      <span
-                        className="dot"
-                        style={{ background: "#cbd5e1" }}
-                      ></span>{" "}
-                      Others <span>20%</span>
-                    </div>
+                    {SPENDING_COMPOSITION.map((expense) => {
+                      return (
+                        <div key={expense.name} className="legend-item">
+                          <span
+                            className="dot"
+                            style={{ background: expense.color }}
+                          ></span>{" "}
+                          {expense.name} <span>{expense.value}%</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -119,19 +117,29 @@ export function Dashboard() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Oct 24, 2023</td>
-                      <td>
-                        <div className="cat-cell">
-                          <i data-lucide="utensils"></i> Dining
-                        </div>
-                      </td>
-                      <td>The Gilded Spoon - Debit Card</td>
-                      <td>
-                        <span className="badge badge-expense">Expense</span>
-                      </td>
-                      <td className="text-right amount-neg">-$142.50</td>
-                    </tr>
+                    {MOCK_TRANSACTIONS.slice(0, 5).map((txn) => {
+                      let amount = (txn.amountCents / 100).toFixed(2);
+                      amount =
+                        txn.type === "expense" ? `-$${amount}` : `$${amount}`;
+
+                      return (
+                        <tr key={txn.id}>
+                          <td>{txn.date}</td>
+                          <td>
+                            <div className="cat-cell">
+                              <i data-lucide={txn.icon}></i> {txn.category}
+                            </div>
+                          </td>
+                          <td>{txn.description}</td>
+                          <td>
+                            <span className={"badge badge-" + txn.type}>
+                              {txn.type}
+                            </span>
+                          </td>
+                          <td className="text-right amount-neg">{amount}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
