@@ -1,3 +1,5 @@
+import "./TransactionItem.css";
+
 export function TransactionItem({ txn, amount, amountColor, page }) {
   return (
     <tr key={txn.id}>

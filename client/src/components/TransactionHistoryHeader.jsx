@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import "./TransactionHistoryHeader.css";
 
 export function TransactionHistoryHeader() {
   return (

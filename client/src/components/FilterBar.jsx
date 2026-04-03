@@ -1,3 +1,5 @@
+import "./FilterBar.css";
+
 export function FilterBar() {
   return (
     <section class="filters-bar">

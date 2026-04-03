@@ -1,0 +1,28 @@
+td {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f8fafc;
+    font-size: 14px;
+}
+
+.cat-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-expense { background-color: var(--tertiary-container); color: var(--white); }
+.badge-income { background-color: var(--secondary-container); color: var(--secondary); }
+
+.amount-neg { color: var(--tertiary); font-weight: 700; }
+.amount-pos { color: var(--secondary); font-weight: 700; }
+
+.text-right { text-align: right; }

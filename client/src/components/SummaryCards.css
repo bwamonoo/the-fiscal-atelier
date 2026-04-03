@@ -1,0 +1,62 @@
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+}
+
+.metric-group .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.balance {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    letter-spacing: -0.05em;
+}
+
+.decimals {
+    color: #cbd5e1;
+    font-weight: 300;
+}
+
+.summary-cards {
+    display: flex;
+    gap: 16px;
+}
+
+.card {
+    padding: 16px 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.card-income { background-color: var(--secondary-container); color: var(--secondary); }
+.card-spending { background-color: var(--tertiary-container); color: var(--white); }
+
+.icon-box {
+    background-color: rgba(255,255,255,0.4);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.card-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.7;
+}
+
+.card-value {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+}

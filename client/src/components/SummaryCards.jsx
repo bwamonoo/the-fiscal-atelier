@@ -1,3 +1,5 @@
+import "./SummaryCards.css";
+
 export function SummaryCards({ netWorth, decimal }) {
   return (
     <section className="hero-section">

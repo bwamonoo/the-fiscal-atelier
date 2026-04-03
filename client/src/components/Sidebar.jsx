@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import "./Sidebar.css";
 
 export function Sidebar() {
   return (

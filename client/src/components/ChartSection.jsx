@@ -1,3 +1,5 @@
+import "./ChartSection.css";
+
 export function ChartSection({ SPENDING_COMPOSITION }) {
   return (
     <section className="chart-section">

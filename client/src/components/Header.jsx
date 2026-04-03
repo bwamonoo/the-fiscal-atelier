@@ -1,3 +1,5 @@
+import "./Header.css";
+
 export function Header({ pageTitle }) {
   return (
     <header className="top-bar">

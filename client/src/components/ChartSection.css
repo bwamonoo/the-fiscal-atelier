@@ -1,0 +1,83 @@
+/* Surface Card */
+.surface-card {
+    background-color: var(--white);
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.card-header h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+}
+
+/* Chart */
+.chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+}
+
+.pie-placeholder {
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    border: 20px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.pie-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pie-label {
+    font-size: 14px;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.pie-total {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.legend-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: var(--bg-slate-50);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}

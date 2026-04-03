@@ -1,3 +1,5 @@
+import "./TransactionForm.css";
+
 export function TransactionForm() {
   return (
     <div className="form-card">
