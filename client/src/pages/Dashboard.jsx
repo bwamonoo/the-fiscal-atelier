@@ -1,4 +1,5 @@
 import { Sidebar } from "../components/Sidebar";
+import { Header } from "../components/Header";
 import { MOCK_TRANSACTIONS } from "../constants";
 import { SPENDING_COMPOSITION } from "../constants";
 import "./Dashboard.css";
@@ -24,18 +25,7 @@ export function Dashboard() {
         <Sidebar />
 
         <main className="main-content">
-          <header className="top-bar">
-            <h2 className="page-title">The Editorial Ledger</h2>
-            <div className="top-bar-actions">
-              <button className="icon-btn">
-                <i data-lucide="bell"></i>
-                <span className="notification-dot"></span>
-              </button>
-              <div className="user-profile">
-                <img src="https://picsum.photos/seed/user/100/100" alt="User" />
-              </div>
-            </div>
-          </header>
+          <Header pageTitle={"The Editorial Ledger"} />
 
           <div className="content-wrapper">
             <section className="hero-section">
@@ -121,6 +111,7 @@ export function Dashboard() {
                       let amount = (txn.amountCents / 100).toFixed(2);
                       amount =
                         txn.type === "expense" ? `-$${amount}` : `$${amount}`;
+                      const amountColor = txn.type === "income" ? "pos" : "neg";
 
                       return (
                         <tr key={txn.id}>
@@ -136,7 +127,9 @@ export function Dashboard() {
                               {txn.type}
                             </span>
                           </td>
-                          <td className="text-right amount-neg">{amount}</td>
+                          <td className={"text-right amount-" + amountColor}>
+                            {amount}
+                          </td>
                         </tr>
                       );
                     })}

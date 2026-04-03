@@ -1,7 +1,7 @@
-export function Header() {
+export function Header({ pageTitle }) {
   return (
     <header className="top-bar">
-      <h2 className="page-title">Transaction Management</h2>
+      <h2 className="page-title">{pageTitle}</h2>
       <div className="top-bar-actions">
         <button className="icon-btn">
           <i data-lucide="bell"></i>

@@ -1,26 +1,18 @@
 import { Sidebar } from "../components/Sidebar";
-import "./TransactionHistory.css"
+import { Header } from "../components/Header";
+import { MOCK_TRANSACTIONS } from "../constants";
+import "./TransactionHistory.css";
 
 export function TransactionHistory() {
   return (
     <>
       <title>The Fiscal Atelier - Transactions</title>
-      
+
       <div class="app-container">
         <Sidebar />
 
         <main class="main-content">
-          <header class="top-bar">
-            <h2 class="page-title">Transaction Ledger</h2>
-            <div class="top-bar-actions">
-              <button class="icon-btn">
-                <i data-lucide="bell"></i>
-              </button>
-              <div class="user-profile">
-                <img src="https://picsum.photos/seed/user/100/100" alt="User" />
-              </div>
-            </div>
-          </header>
+          <Header pageTitle={"Transaction Ledger"} />
 
           <div class="content-wrapper">
             <section class="history-header">
@@ -71,6 +63,40 @@ export function TransactionHistory() {
                   </tr>
                 </thead>
                 <tbody>
+                  {MOCK_TRANSACTIONS.map((txn) => {
+                    let amount = (txn.amountCents / 100).toFixed(2);
+                    amount =
+                      txn.type === "income" ? `$${amount}` : `-$${amount}`;
+                    const amountColor = txn.type === "income" ? "pos" : "neg";
+
+                    return (
+                      <tr key={txn.id}>
+                        <td>{txn.date}</td>
+                        <td>
+                          <div class="cat-cell">
+                            <i data-lucide={txn.icon}></i> {txn.category}
+                          </div>
+                        </td>
+                        <td>{txn.description}</td>
+                        <td>
+                          <span class={"badge badge-" + txn.type}>
+                            {txn.type}
+                          </span>
+                        </td>
+                        <td class={"text-right amount-" + amountColor}>
+                          {amount}
+                        </td>
+                        <td class="text-right">
+                          <button class="icon-btn-sm">
+                            <i data-lucide="edit-2"></i>
+                          </button>
+                          <button class="icon-btn-sm">
+                            <i data-lucide="trash-2"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
                   <tr>
                     <td>Oct 24, 2023</td>
                     <td>

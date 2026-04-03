@@ -1,4 +1,5 @@
 import { Sidebar } from "../components/Sidebar";
+import { Header } from "../components/Header";
 import "./AddTransaction.css";
 
 export function AddTransaction() {
@@ -10,7 +11,7 @@ export function AddTransaction() {
         <Sidebar />
 
         <main className="main-content">
-
+          <Header pageTitle={"Transaction Management"} />
 
           <div className="content-wrapper centered">
             <div className="breadcrumb">
