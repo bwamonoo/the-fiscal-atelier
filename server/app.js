@@ -4,6 +4,7 @@ import { PORT } from "./config/env.js";
 
 const app = express();
 
+app.get("/health", (req, res) => res.send({title: "up and ready."}))
 
 app.listen(PORT, () => {
   console.log(`Fiscal Atelier server is running on http://localhost:${PORT}`);
