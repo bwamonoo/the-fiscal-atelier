@@ -1,5 +1,6 @@
 import express from "express";
 import { PORT } from "./config/env.js";
+import { connectToDatabase } from "./database/mongodb.js";
 import { authRouter } from "./routes/auth.routes.js";
 import { userRouter } from "./routes/user.routes.js";
 import { transactionRouter } from "./routes/transaction.routes.js";
@@ -12,6 +13,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/transactions", transactionRouter);
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Fiscal Atelier server is running on http://localhost:${PORT}`);
+  await connectToDatabase();
 });
