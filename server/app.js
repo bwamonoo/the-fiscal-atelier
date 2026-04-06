@@ -8,7 +8,7 @@ import { transactionRouter } from "./routes/transaction.routes.js";
 
 const app = express();
 
-app.get("api/health", (req, res) => res.send({title: "up and ready."}));
+app.get("/api/health", (req, res) => res.send({title: "up and ready."}));
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/transactions", transactionRouter);
