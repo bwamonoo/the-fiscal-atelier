@@ -1,31 +1,41 @@
 export const errorMiddleware = (err, req, res, next) => {
   try {
-    let error = {...err}
-    error.message = err.message;
-    console.error(err);
+    // use err.message directly if the custom logic doesn't override it
+    let statusCode = err.statusCode || 500;
+    let message = err.message || "Server Error";
+
+    console.error("--- ERROR LOG ---", err);
+
+    // bcrypt Type Error (Illegal arguments)
+    if (err.message.includes("Illegal arguments")) {
+      message = "Invalid input type. Please ensure passwords are strings.";
+      statusCode = 400;
+    }
 
     // mongoose bad ObjectId
     if (err.name === "CastError") {
-      const message = "Resourse not found";
-      error = new Error(message);
-      error.statusCode = 404;
+      message = "Resource not found";
+      statusCode = 404;
     }
 
     // mongoose duplicate key
-    if (err.code === 1100) {
-      const message = "Duplicate field value entered";
-      error = new Error(message);
-      error.statusCode = 400;
+    if (err.code === 11000) {
+      message = "Duplicate field value entered";
+      statusCode = 400;
     }
 
     // mongoose validation error
     if (err.name === "ValidationError") {
-      const message = Object.values(err.errors).map(val => val.message);
-      error = new Error(message.join(", "));
-      error.statusCode = 400;
+      message = Object.values(err.errors)
+        .map((val) => val.message)
+        .join(", ");
+      statusCode = 400;
     }
 
-    res.status(error.statusCode || 500).json({success: false, error: error.message || "Server Error"})
+    res.status(statusCode).json({
+      success: false,
+      error: message,
+    });
   } catch (error) {
     next(error);
   }
