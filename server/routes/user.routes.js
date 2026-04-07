@@ -1,11 +1,14 @@
 import { Router } from "express";
+import { getUser, getUsers } from "../controllers/user.controller.js";
 
 const userRouter = Router();
 
-userRouter.get("/", (req, res) => res.send({title: "GET/users"}));
-userRouter.get("/:id", (req, res) => res.send({title: "GET/users/:id"}));
-userRouter.post("/", (req, res) => res.send({title: "POST/users"}));
-userRouter.put("/:id", (req, res) => res.send({title: "PUT/users/:id"}));
-userRouter.get("/:id", (req, res) => res.send({title: "DELETE/users/:id"}));
+userRouter.get("/", getUsers);
+userRouter.get("/:id", getUser);
+userRouter.post("/", (req, res) => res.send({ title: "POST/users" }));
+userRouter.put("/:id", (req, res) => res.send({ title: "PUT/users/:id" }));
+userRouter.delete("/:id", (req, res) =>
+  res.send({ title: "DELETE/users/:id" }),
+);
 
 export { userRouter };
