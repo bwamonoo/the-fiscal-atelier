@@ -7,6 +7,7 @@ import { authRouter } from "./routes/auth.routes.js";
 import { userRouter } from "./routes/user.routes.js";
 import { transactionRouter } from "./routes/transaction.routes.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
+import { authorizeUser } from "./middlewares/auth.middleware.js";
 
 const app = express();
 
@@ -38,6 +39,8 @@ app.use(
 
 app.get("/api/health", (req, res) => res.send({ title: "up and ready." }));
 app.use("/api/auth", authRouter);
+
+app.use(authorizeUser);
 app.use("/api/users", userRouter);
 app.use("/api/transactions", transactionRouter);
 
