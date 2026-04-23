@@ -132,3 +132,54 @@ export const getTransactionsSummary = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getSpendingComposition = async (req, res, next) => {
+  const query = { user: req.user._id };
+
+  const start = new Date();
+  start.setDate(1);
+  start.setHours(0, 0, 0, 0);
+
+  const end = new Date();
+
+  query.date = {
+    $gte: start,
+    $lt: end,
+  };
+
+  try {
+    let transactions = await Transaction.find(query).lean();
+
+    let spendingComposition = {};
+    let totalExpense = 0;
+
+    transactions.forEach((trnx) => {
+      if (trnx.type === "expense") {
+        totalExpense += trnx.amountCents;
+
+        if (spendingComposition[trnx.category]) {
+          spendingComposition[trnx.category] += trnx.amountCents;
+        } else {
+          spendingComposition[trnx.category] = trnx.amountCents;
+        }
+      }
+    });
+
+    if (totalExpense === 0) {
+      return res.status(200).json({ success: true, data: {} });
+    }
+
+    for (let category in spendingComposition) {
+      const amount = spendingComposition[category];
+      spendingComposition[category] = ((amount / totalExpense) * 100).toFixed(
+        2,
+      );
+    }
+
+    res
+      .status(200)
+      .json({ success: true, data: { totalExpense, spendingComposition } });
+  } catch (error) {
+    next(error);
+  }
+};

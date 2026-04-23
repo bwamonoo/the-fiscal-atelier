@@ -3,6 +3,7 @@ import {
   createTransaction,
   getUserTransactions,
   getTransactionsSummary,
+  getSpendingComposition,
 } from "../controllers/transaction.controller.js";
 
 const transactionRouter = Router();
@@ -12,7 +13,7 @@ transactionRouter.get("/", (req, res) =>
 );
 
 transactionRouter.get("/summary", getTransactionsSummary);
-// transactionRouter.get("/spending-composition", getSpendingComposition);
+transactionRouter.get("/spending-composition", getSpendingComposition);
 
 transactionRouter.get("/user", getUserTransactions);
 transactionRouter.delete("/user/:id", (req, res) =>
