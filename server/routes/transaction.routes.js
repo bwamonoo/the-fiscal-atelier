@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   createTransaction,
   getUserTransactions,
+  getTransactionsSummary,
 } from "../controllers/transaction.controller.js";
 
 const transactionRouter = Router();
@@ -9,6 +10,9 @@ const transactionRouter = Router();
 transactionRouter.get("/", (req, res) =>
   res.send({ title: "GET/transactions" }),
 );
+
+transactionRouter.get("/summary", getTransactionsSummary);
+// transactionRouter.get("/spending-composition", getSpendingComposition);
 
 transactionRouter.get("/user", getUserTransactions);
 transactionRouter.delete("/user/:id", (req, res) =>

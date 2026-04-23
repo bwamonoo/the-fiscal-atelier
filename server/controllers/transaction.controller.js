@@ -95,3 +95,40 @@ export const getUserTransactions = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getTransactionsSummary = async (req, res, next) => {
+  const query = { user: req.user._id };
+
+  const start = new Date();
+  start.setDate(1);
+  start.setHours(0, 0, 0, 0);
+
+  const end = new Date();
+
+  query.date = {
+    $gte: start,
+    $lt: end,
+  };
+
+  try {
+    let transactions = await Transaction.find(query).lean();
+
+    let income = 0;
+    let expense = 0;
+    let monthlyBalance = 0;
+
+    transactions.forEach((trnx) => {
+      trnx.type === "income"
+        ? (income += trnx.amountCents)
+        : (expense += trnx.amountCents);
+    });
+
+    monthlyBalance = income - expense;
+
+    res
+      .status(200)
+      .json({ success: true, data: { income, expense, monthlyBalance } });
+  } catch (error) {
+    next(error);
+  }
+};
