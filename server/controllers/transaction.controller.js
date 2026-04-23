@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { Transaction } from "../models/transaction.model.js";
-import { ICONS } from "../constants.js";
+import { CATEGORIES, ICONS } from "../constants.js";
 
 export const createTransaction = async (req, res, next) => {
   const session = await mongoose.startSession();
@@ -182,4 +182,8 @@ export const getSpendingComposition = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+};
+
+export const getTransactionCategories = async (req, res, next) => {
+  res.status(200).json({ success: true, data: { categories: CATEGORIES } });
 };

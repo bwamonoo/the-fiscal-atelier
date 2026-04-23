@@ -4,6 +4,7 @@ import {
   getUserTransactions,
   getTransactionsSummary,
   getSpendingComposition,
+  getTransactionCategories,
 } from "../controllers/transaction.controller.js";
 
 const transactionRouter = Router();
@@ -12,6 +13,7 @@ transactionRouter.get("/", (req, res) =>
   res.send({ title: "GET/transactions" }),
 );
 
+transactionRouter.get("/categories", getTransactionCategories);
 transactionRouter.get("/summary", getTransactionsSummary);
 transactionRouter.get("/spending-composition", getSpendingComposition);
 
