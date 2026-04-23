@@ -79,7 +79,7 @@ export const getUserTransactions = async (req, res, next) => {
     let transactions = await Transaction.find(query).lean();
 
     transactions.forEach((trxn) => {
-      trxn.icon = ICONS[trxn.category];
+      trxn.icon = ICONS[trxn.category].name;
     });
 
     if (search) {
@@ -134,7 +134,7 @@ export const getTransactionsSummary = async (req, res, next) => {
 };
 
 export const getSpendingComposition = async (req, res, next) => {
-  const query = { user: req.user._id };
+  const query = { user: req.user._id, type: "expense" };
 
   const start = new Date();
   start.setDate(1);
@@ -148,32 +148,46 @@ export const getSpendingComposition = async (req, res, next) => {
   };
 
   try {
-    let transactions = await Transaction.find(query).lean();
+    let spendingData = await Transaction.aggregate([
+      {
+        $match: query,
+      },
+      {
+        $group: {
+          _id: "$category",
+          total: { $sum: "$amountCents" },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          category: "$_id",
+          total: 1,
+        },
+      },
+    ]);
 
-    let spendingComposition = {};
     let totalExpense = 0;
 
-    transactions.forEach((trnx) => {
-      if (trnx.type === "expense") {
-        totalExpense += trnx.amountCents;
-
-        if (spendingComposition[trnx.category]) {
-          spendingComposition[trnx.category] += trnx.amountCents;
-        } else {
-          spendingComposition[trnx.category] = trnx.amountCents;
-        }
-      }
+    spendingData.forEach((trnx) => {
+      totalExpense += trnx.total;
     });
 
     if (totalExpense === 0) {
-      return res.status(200).json({ success: true, data: {} });
+      return res
+        .status(200)
+        .json({ success: true, data: { totalExpense, spendingData } });
     }
 
-    for (let category in spendingComposition) {
-      const amount = spendingComposition[category];
-      spendingComposition[category] = ((amount / totalExpense) * 100).toFixed(
-        2,
-      );
+    const spendingComposition = [];
+
+    for (let item of spendingData) {
+      const percentage = (item.total / totalExpense) * 100;
+      spendingComposition.push({
+        name: item.category,
+        value: percentage,
+        color: ICONS[item.category]?.color || "#dab7d0",
+      });
     }
 
     res
