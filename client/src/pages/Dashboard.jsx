@@ -7,7 +7,7 @@ import { MOCK_TRANSACTIONS } from "../constants";
 import { SPENDING_COMPOSITION } from "../constants";
 import "./Dashboard.css";
 
-export function Dashboard() {
+export function Dashboard({ transactions }) {
   let netWorth = 0;
 
   MOCK_TRANSACTIONS.forEach((txn) => {
@@ -42,7 +42,7 @@ export function Dashboard() {
                 </button>
               </div>
               <TransactionList
-                MOCK_TRANSACTIONS={MOCK_TRANSACTIONS}
+                MOCK_TRANSACTIONS={transactions}
                 page={"Dashboard"}
               />
             </section>
