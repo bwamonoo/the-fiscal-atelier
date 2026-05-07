@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+
+/* Left Branding Side */
+.side-brand {
+    display: none; width: 45%; background: var(--atelier-dark); position: relative; 
+    padding: 64px; flex-direction: column; justify-content: space-between; overflow: hidden;
+}
+@media (min-width: 1024px) { .side-brand { display: flex; } }
+
+.side-brand-bg {
+    position: absolute; inset: 0; scale: 1.05;
+    background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover;
+    opacity: 0.4; filter: grayscale(100%) brightness(0.7);
+}
+.side-brand-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--atelier-dark), rgba(26,26,26,0.4), transparent);
+}
+
+.brand-icon {
+    position: relative; z-index: 10; width: 48px; height: 48px; background: #fff;
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.tagline-container { position: relative; z-index: 10; max-width: 440px; }
+.clarity-tag { 
+    display: flex; align-items: center; gap: 12px; color: var(--gold); 
+    font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 600; 
+    letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px;
+}
+.clarity-tag::before { content: ""; width: 32px; height: 1px; background: var(--gold); }
+
+.side-title { 
+    color: #fff; font-family: 'Manrope', sans-serif; font-size: 48px; font-weight: 800; 
+    line-height: 1.1; margin-bottom: 24px; 
+}
+.side-desc { color: rgba(255,255,255,0.7); font-size: 18px; font-weight: 300; line-height: 1.6; }
+
+/* Right Form Side */
+.side-form { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--atelier-bg); padding: 32px; }
+.form-container { width: 100%; max-width: 440px; }
+
+.header-main { margin-bottom: 40px; }
+.header-main h2 { font-family: 'Manrope', sans-serif; font-size: 40px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+.header-main p { color: var(--text-muted); font-size: 18px; font-weight: 500; }
+
+.signin-card { background: #fff; padding: 48px; border-radius: 20px; border: 1px solid var(--atelier-border); box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
+
+.field { margin-bottom: 24px; }
+.field label { display: block; font-size: 10px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 8px; }
+.field input { 
+    width: 100%; padding: 16px; background: var(--atelier-gray); border: 2px solid transparent; 
+    border-radius: 8px; font-size: 16px; transition: all 0.2s; 
+}
+.field input:focus { outline: none; border-color: var(--atelier-dark); background: #fff; }
+.field input::placeholder { color: #D1D5DB; }
+
+.actions { display: flex; align-items: center; justify-content: space-between; margin: 8px 0 32px; }
+.forgot { font-size: 14px; font-weight: 700; color: var(--blue); text-decoration: none; }
+.forgot:hover { text-decoration: underline; }
+
+/* Custom Checkbox */
+.remember { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.checkbox-ui { 
+    width: 20px; height: 20px; border: 1px solid #D1D5DB; border-radius: 4px; 
+    background: #fff; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+}
+.hidden-cb { display: none; }
+.hidden-cb:checked + .checkbox-ui { background: var(--atelier-dark); border-color: var(--atelier-dark); }
+.check-icon { width: 12px; height: 12px; color: #fff; display: none; }
+.hidden-cb:checked + .checkbox-ui .check-icon { display: block; }
+.rem-text { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+
+.btn-signin { 
+    width: 100%; padding: 16px; background: var(--atelier-dark); color: #fff; border: none; 
+    border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; 
+    display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.btn-signin:hover { background: #262626; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+.btn-signin svg { transition: transform 0.2s; }
+.btn-signin:hover svg { transform: translateX(4px); }
+
+.signup-box { margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--atelier-border); text-align: center; font-size: 14px; color: var(--text-muted); }
+.signup-link { color: var(--blue); font-weight: 800; text-decoration: none; }
+
+.security { display: flex; gap: 32px; margin-top: 48px; padding-left: 8px; }
+.sec-item { display: flex; align-items: center; gap: 10px; }
+.sec-item svg { color: var(--gold); }
+.sec-item span { font-size: 10px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; }
+
+footer { margin-top: auto; padding-top: 48px; }
+.foot-copy { font-size: 10px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.3em; }

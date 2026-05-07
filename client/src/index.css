@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
     --primary: #0040a1;
     --primary-container: #0056d2;
@@ -10,6 +12,15 @@
     --outline: #737785;
     --bg-slate-50: #f8fafc;
     --white: #ffffff;
+    --atelier-dark: #1A1A1A;
+    --atelier-gray: #F5F5F5;
+    --atelier-border: #E5E5E5;
+    --atelier-bg: #F9FAFB;
+    --gold: #D4AF37;
+    --white: #FFFFFF;
+    --blue: #0066FF;
+    --text-muted: #6B7280;
+    --text-light: #9CA3AF;
 }
 
 * {
@@ -23,4 +34,5 @@ body {
     background-color: var(--surface);
     color: var(--on-surface);
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased; 
 }
