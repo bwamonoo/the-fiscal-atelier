@@ -38,7 +38,7 @@ export const signUp = async (req, res, next) => {
       httpOnly: true,
       secure: isProduction,
       sameSite: "strict",
-      maxAge: 1 * 24 * 60 * 60 * 100,
+      maxAge: 1 * 24 * 60 * 60 * 1000,
     });
 
     const userResponse = newUser.toObject();
@@ -90,11 +90,12 @@ export const signIn = async (req, res, next) => {
     });
 
     const isProduction = NODE_ENV === "production";
+    console.log("node_env:", NODE_ENV);
 
     res.cookie("token", token, {
       httpOnly: true,
       secure: isProduction,
-      sameSite: "strict",
+      sameSite: isProduction ? "none" : "lax",
       maxAge: 1 * 24 * 60 * 60 * 100,
     });
 

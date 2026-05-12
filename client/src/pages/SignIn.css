@@ -82,6 +82,12 @@
 .btn-signin:hover { background: #262626; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
 .btn-signin svg { transition: transform 0.2s; }
 .btn-signin:hover svg { transform: translateX(4px); }
+.fade {
+    background: var(--text-light);
+}
+.fade:hover {
+    background: var(--text-light);
+}
 
 .signup-box { margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--atelier-border); text-align: center; font-size: 14px; color: var(--text-muted); }
 .signup-link { color: var(--blue); font-weight: 800; text-decoration: none; }

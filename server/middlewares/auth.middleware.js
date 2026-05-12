@@ -5,9 +5,10 @@ import { JWT_SECRET } from "../config/env.js";
 
 export const authorizeUser = async (req, res, next) => {
   try {
-    let token;
+    let token = req.cookies.token;
 
     if (
+      !token &&
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer")
     ) {
