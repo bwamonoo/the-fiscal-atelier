@@ -20,8 +20,6 @@ export function TransactionForm() {
   const [date, setDate] = useState(formattedDate);
   const [description, setDescription] = useState("");
 
-  // console.log("des:", description);
-
   const createTransaction = async (event) => {
     if (event) event.preventDefault();
 
