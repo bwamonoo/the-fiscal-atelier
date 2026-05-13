@@ -1,25 +1,33 @@
 import "./TransactionItem.css";
 
 export function TransactionItem({ txn, amount, amountColor, page }) {
+  const date = new Date(txn.date);
+
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
-    <tr key={txn.id}>
-      <td>{txn.date}</td>
+    <tr>
+      <td>{formattedDate}</td>
       <td>
-        <div class="cat-cell">
+        <div className="cat-cell">
           <i data-lucide={txn.icon}></i> {txn.category}
         </div>
       </td>
       <td>{txn.description}</td>
       <td>
-        <span class={"badge badge-" + txn.type}>{txn.type}</span>
+        <span className={"badge badge-" + txn.type}>{txn.type}</span>
       </td>
-      <td class={"text-right amount-" + amountColor}>{amount}</td>
+      <td className={"text-right amount-" + amountColor}>{amount}</td>
       {page == "TransactionHistory" && (
-        <td class="text-right">
-          <button class="icon-btn-sm">
+        <td className="text-right">
+          <button className="icon-btn-sm">
             <i data-lucide="edit-2"></i>
           </button>
-          <button class="icon-btn-sm">
+          <button className="icon-btn-sm">
             <i data-lucide="trash-2"></i>
           </button>
         </td>

@@ -1,10 +1,9 @@
 import "./TransactionList.css";
-
 import { TransactionItem } from "./TransactionItem";
 
-export function TransactionList({ MOCK_TRANSACTIONS, page }) {
+export function TransactionList({ transactions, page }) {
   return (
-    <div class="table-card">
+    <div className="table-card">
       <table>
         <thead>
           <tr>
@@ -14,17 +13,24 @@ export function TransactionList({ MOCK_TRANSACTIONS, page }) {
             <th>Type</th>
             {page == "TransactionHistory" && (
               <>
-                <th class="text-right">Amount</th>
-                <th class="text-right">Actions</th>
+                <th className="text-right">Amount</th>
+                <th className="text-right">Actions</th>
               </>
             )}
           </tr>
         </thead>
         <tbody>
-          {MOCK_TRANSACTIONS.map((txn) => {
+          {transactions.map((txn) => {
+            let amountColor;
             let amount = (txn.amountCents / 100).toFixed(2);
-            amount = txn.type === "income" ? `$${amount}` : `-$${amount}`;
-            const amountColor = txn.type === "income" ? "pos" : "neg";
+
+            if (txn.type === "income") {
+              amountColor = "pos";
+              amount = "$" + amount;
+            } else {
+              amountColor = "neg";
+              amount = "-$" + amount;
+            }
 
             return (
               <TransactionItem
@@ -40,15 +46,15 @@ export function TransactionList({ MOCK_TRANSACTIONS, page }) {
       </table>
       {page == "TransactionHistory" && (
         <>
-          <div class="pagination">
+          <div className="pagination">
             <span>Showing 1 to 5 of 124 transactions</span>
-            <div class="page-controls">
-              <button class="icon-btn-sm">
+            <div className="page-controls">
+              <button className="icon-btn-sm">
                 <i data-lucide="chevron-left"></i>
               </button>
-              <button class="page-btn active">1</button>
-              <button class="page-btn">2</button>
-              <button class="icon-btn-sm">
+              <button className="page-btn active">1</button>
+              <button className="page-btn">2</button>
+              <button className="icon-btn-sm">
                 <i data-lucide="chevron-right"></i>
               </button>
             </div>

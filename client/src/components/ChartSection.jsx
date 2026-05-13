@@ -1,6 +1,8 @@
+import { formatMoney } from "../utils/money";
 import "./ChartSection.css";
 
-export function ChartSection({ SPENDING_COMPOSITION }) {
+export function ChartSection({ expenses }) {
+  const { spendingComposition = [], totalExpense = 0 } = expenses;
   return (
     <section className="chart-section">
       <div className="surface-card">
@@ -12,18 +14,18 @@ export function ChartSection({ SPENDING_COMPOSITION }) {
           <div className="pie-placeholder">
             <div className="pie-center">
               <span className="pie-label">Total</span>
-              <span className="pie-total">$4,210</span>
+              <span className="pie-total">{formatMoney(totalExpense)}</span>
             </div>
           </div>
           <div className="legend-grid">
-            {SPENDING_COMPOSITION.map((expense) => {
+            {spendingComposition.map((expense) => {
               return (
                 <div key={expense.name} className="legend-item">
                   <span
                     className="dot"
                     style={{ background: expense.color }}
                   ></span>{" "}
-                  {expense.name} <span>{expense.value}%</span>
+                  {expense.name} <span>{expense.value.toFixed(0)}%</span>
                 </div>
               );
             })}

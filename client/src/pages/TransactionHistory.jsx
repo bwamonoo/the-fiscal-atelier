@@ -6,24 +6,24 @@ import { TransactionList } from "../components/TransactionList";
 import { MOCK_TRANSACTIONS } from "../constants";
 import "./TransactionHistory.css";
 
-export function TransactionHistory() {
+export function TransactionHistory({ transactions }) {
   return (
     <>
       <title>The Fiscal Atelier - Transactions</title>
 
-      <div class="app-container">
+      <div className="app-container">
         <Sidebar />
 
-        <main class="main-content">
+        <main className="main-content">
           <Header pageTitle={"Transaction Ledger"} />
 
-          <div class="content-wrapper">
+          <div className="content-wrapper">
             <TransactionHistoryHeader />
             <FilterBar />
 
             <TransactionList
-              MOCK_TRANSACTIONS={MOCK_TRANSACTIONS}
-              page={"TransactionHistory"}
+              transactions={transactions}
+              page="TransactionHistory"
             />
           </div>
         </main>
