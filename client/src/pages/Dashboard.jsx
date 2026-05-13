@@ -1,24 +1,41 @@
+import { useState, useEffect } from "react";
+import { api } from "../api/axios";
 import { Sidebar } from "../components/Sidebar";
 import { Header } from "../components/Header";
 import { SummaryCards } from "../components/SummaryCards";
 import { ChartSection } from "../components/ChartSection";
 import { TransactionList } from "../components/TransactionList";
-import { MOCK_TRANSACTIONS } from "../constants";
 import { SPENDING_COMPOSITION } from "../constants";
 import "./Dashboard.css";
 
 export function Dashboard({ transactions }) {
-  let netWorth = 0;
+  const [transactionSummary, setTransactionSummary] = useState({});
+  const [expenses, setExpenses] = useState({});
 
-  MOCK_TRANSACTIONS.forEach((txn) => {
-    txn.type === "income"
-      ? (netWorth += txn.amountCents)
-      : (netWorth -= txn.amountCents);
-  });
+  useEffect(() => {
+    const getTransactionSummary = async () => {
+      try {
+        const response = await api.get("/transactions/summary");
+        setTransactionSummary(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  console.log("net", (netWorth / 100).toFixed(2));
-  netWorth = String((netWorth / 100).toFixed(2)).slice(0, -3);
-  const decimal = String((netWorth / 100).toFixed(2)).slice(-3);
+    const getSpendingComposition = async () => {
+      try {
+        const response = await api.get("/transactions/spending-composition");
+        console.log("respons.data: ", response.data);
+        console.log("respons.data.data: ", response.data.data);
+        setExpenses(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getTransactionSummary();
+    getSpendingComposition();
+  }, []);
 
   return (
     <>
@@ -31,8 +48,8 @@ export function Dashboard({ transactions }) {
           <Header pageTitle={"The Editorial Ledger"} />
 
           <div className="content-wrapper">
-            <SummaryCards netWorth={netWorth} decimal={decimal} />
-            <ChartSection SPENDING_COMPOSITION={SPENDING_COMPOSITION} />
+            <SummaryCards transactionSummary={transactionSummary} />
+            <ChartSection expenses={expenses} />
 
             <section className="table-section">
               <div className="section-header">
@@ -41,10 +58,7 @@ export function Dashboard({ transactions }) {
                   Archive Access <i data-lucide="arrow-right"></i>
                 </button>
               </div>
-              <TransactionList
-                MOCK_TRANSACTIONS={transactions}
-                page={"Dashboard"}
-              />
+              <TransactionList transactions={transactions} page="Dashboard" />
             </section>
           </div>
         </main>
